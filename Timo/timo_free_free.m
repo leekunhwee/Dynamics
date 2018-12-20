@@ -25,7 +25,7 @@ Mr = mpl*l/(1+phi)^2*(rg/l)^2*[6/5 (1/10-phi/2)*l -6/5 (1/10-phi/2)*l;
 
 M = Mt + Mr;
 
-% Stiffness matrix£¬¸Õ¶ÈÕó
+% Stiffness matrix
 Kb = EI/(l^3*(1+phi)^2)*[12 6*l -12 6*l;
     6*l (4+2*phi+phi^2)*l^2 -6*l (2-2*phi-phi^2)*l^2;
     -12 -6*l 12 -6*l;
@@ -68,7 +68,7 @@ for cnt = 2:n
     K = Ktemp1 + Ktemp2;
 end
 
-% Calculate required direct and cross receptances for ends of beam ÁºµÄÔ­µãºÍ¿çµãÆµÏì
+% Calculate required direct and cross receptances for ends of beam æ¢çš„åŸç‚¹å’Œè·¨ç‚¹é¢‘å“
 t1 = length(f);
 R11 = zeros(2,2,t1);
 R21 = zeros(2,2,t1);
