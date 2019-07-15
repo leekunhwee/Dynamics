@@ -1,6 +1,6 @@
 % timo_free_free.m
-% This program uses n Timoshenko beam elements to determine end receptances
-% for free-free beam.
+% This program uses n Timoshenko beam elements to determine end receptances for free-free beam.
+
 % Input variables are: f, frequency, Hz; EI,
 % structural rigidity including hysteretic damping, N-m^2;
 % L, beam length, m; density, kg/m^3; A, cross sectional area, 
