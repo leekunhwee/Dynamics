@@ -1,5 +1,18 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ---------------Copyright------------------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Author: Jianhui Li                         %
+% Time: 07/15/2019                           %
+% University of British Columbia, BC, Canada %
+% Affiliation:                               %
+% Department of Mechanical Engineering       %
+% Manufacturing Automation Laboratary        %
+% E-mail: jianhui.li@alumni.ubc.ca           %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % timo_free_free.m
-% This program uses n Timoshenko beam elements to determine end receptances for free-free beam.
+% Using n Timoshenko beam elements to determine end receptances for free-free beam.
+% End receptances including the Direct FRF R11 & R22 and Cross FRF R12 & R21
 
 % Input variables are: f, frequency, Hz; EI,
 % structural rigidity including hysteretic damping, N-m^2;
@@ -13,6 +26,12 @@ phi = 12*EI/(kp*AG*l^2);    % shear deformation parameter
 
 % Single element matrices for Timoshenko beam 
 % Mass matrix
+
+% Reference?Schmitz, T. L., & Duncan, G. S. (2005). 
+% Three-Component Receptance Coupling Substructure Analysis for Tool Point 
+% Dynamics Prediction. Journal of Manufacturing Science and Engineering, 
+% 127(4), 781. https://doi.org/10.1115/1.2039102
+
 Mt = mpl*l/(1+phi)^2*[(13/35+7*phi/10+phi^2/3) (11/210+11*phi/120+phi^2/24)*l (9/70+3*phi/10+phi^2/6) -(13/420+3*phi/40+phi^2/24)*l;
     (11/210+11*phi/120+phi^2/24)*l (1/105+phi/60+phi^2/120)*l^2 (13/420+3*phi/40+phi^2/24)*l -(1/140+phi/60+phi^2/120)*l^2;
     (9/70+3*phi/10+phi^2/6) (13/420+3*phi/40+phi^2/24)*l (13/35+7*phi/10+phi^2/3) -(11/210+11*phi/120+phi^2/24)*l;
@@ -68,7 +87,7 @@ for cnt = 2:n
     K = Ktemp1 + Ktemp2;
 end
 
-% Calculate required direct and cross receptances for ends of beam 梁的原点和跨点频响
+% Calculate required direct and cross receptances for ends of beam �?的原点和跨点频�?
 t1 = length(f);
 R11 = zeros(2,2,t1);
 R21 = zeros(2,2,t1);
@@ -100,4 +119,3 @@ for cnt = 1:t1
     
     clear D;
 end
-

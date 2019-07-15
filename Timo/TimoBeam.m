@@ -1,7 +1,18 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ---------------Copyright------------------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Author: Jianhui Li                         %
+% Time: 07/15/2019                           %
+% University of British Columbia, BC, Canada %
+% Affiliation:                               %
+% Department of Mechanical Engineering       %
+% Manufacturing Automation Laboratary        %
+% E-mail: jianhui.li@alumni.ubc.ca           %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % Timoshenko Beam Tip FRF 
-% Verified ¡Ì
-% Jianhui.Li
-% 2018.12.05
+% Verified
+
 clc
 clear
 close all
@@ -48,14 +59,15 @@ Ht11=reshape(Gt11(1,1,:),1,length(w));
 % Plot tip FRF of the cantilever beam
 figure(1)
 subplot(211)
-plot(w/2/pi,real(Ht11),'k')
+plot(w/2/pi,real(Ht11),'b','linewidth',1.5)
 % axis([300 700 -3.75e-4 3.75e-4])
-set(gca,'FontSize', 14)
-ylabel('Real (m/N)')
-subplot(212)
-plot(w/2/pi,imag(Ht11),'k')
-% axis([300 700 -7e-4 7e-5])
-set(gca,'FontSize', 14)
-xlabel('Frequency (Hz)')
-ylabel('Imag (m/N)')
+set(gca,'FontSize', 10 ,'FontName', 'Times New Roman')
+ylabel('\fontsize{10}\fontname{Times New Roman}Real / m·N^{-1}')
+title('\fontsize{10}\fontname{Times New Roman}FRF Coupling using Timoshenko Beam Theory')
 
+subplot(212)
+plot(w/2/pi,imag(Ht11),'b','linewidth',1.5)
+% axis([300 700 -7e-4 7e-5])
+set(gca,'FontSize', 10 ,'FontName', 'Times New Roman')
+xlabel('\fontsize{10}\fontname{Times New Roman}Frequency / Hz')
+ylabel('\fontsize{10}\fontname{Times New Roman}Imag / m·N^{-1}')
