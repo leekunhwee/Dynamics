@@ -1,8 +1,9 @@
+%% Compare the coupled 140mm 16mm + 50mm 10mm Beam with Experimental Results
 clc
 clear
 close all
 
-load IRCSA
+load IRCSA % The FRFs at the end of the Beam 190mm after removing 50mm
 load BEPData
 load Beam_Theoretical
 
