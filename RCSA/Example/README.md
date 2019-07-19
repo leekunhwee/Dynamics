@@ -34,7 +34,7 @@
 涉及函数RCSA.m ，即子结构耦合计算方法。
 <br>
 <div align = "center">  
-<img src = "CompareRCSA.png"  width = "300" height = "200" alt = "子结构方法验证" title = "子结构方法验证">
+<img src = "CompareRCSA.png"  width = "600" height = "400" alt = "子结构方法验证" title = "子结构方法验证">
 </div>
 <p align = "center"><b>子结构方法验证</b></p>
 <br>
@@ -42,14 +42,14 @@
 涉及函数Experimental_IRCSA.m 和 IRCSA.m，即逆子结构耦合计算方法。
 <br>
 <div align = "center">  
-<img src = "CompareIRCSA.png"  width = "300" height = "200" alt = "逆子结构方法验证" title = "逆子结构方法验证">
+<img src = "CompareIRCSA.png"  width = "600" height = "400" alt = "逆子结构方法验证" title = "逆子结构方法验证">
 </div>
 <p align = "center"><b>逆子结构方法验证</b></p>
 <br>
 5.	CompareFinalResults.m 是将190mm φ16mm 圆柱悬臂梁剔除50mm后再耦合上50mm φ10mm 圆柱梁，用子结构法计算端点频响，并与试验结果d_190_h11NEW比较。验证逆子结构的可靠性。
 <br>
 <div align = "center">  
-<img src = "CompareFinalResults.png"  width = "300" height = "200" alt = "综合验证" title = "综合验证">
+<img src = "CompareFinalResults.png"  width = "600" height = "400" alt = "综合验证" title = "综合验证">
 </div>
 <p align = "center"><b>综合验证</b></p>
 <br>
