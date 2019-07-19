@@ -1,7 +1,9 @@
 function [R11, R21, R12, R22] = Beam_FRF(length, d_out, d_in, f1, f2, r, density_out, density_in, E_out, E_in, nu_out, nu_in, el)
 %% function to get FRFs of a beam in Free-Free conditon with timoshenko beam element (Numerical method)
+
 % This function can be used to calculate the Hollow Beam by considering the Externer Diameter and Inner Diameter
 % While timo_free_free.m only can be used to calculate the Solid Cylindrical Beam
+
 % 'l'(unit,mm) is the length of the beam.
 % 'd'(unit,mm) is the diameter of the beam.
 % [f1,f2](unit,HZ) is the range of calculated frequency, and 'r'(unit,HZ) is the resolution of the range, and 'num'(unit,1) is the number of natural frequencies you want to obtain.
