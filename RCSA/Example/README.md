@@ -5,8 +5,8 @@
 7075铝合金制成的底座、夹持套和三个不同的细长梁
 
 <br>
-<div align ="center">
-<img src = "/Example/Beam.png" alt="试验梁尺寸" title="试验梁尺寸">
+<div align = "center">  
+<img src = "Beam.png"  width = "600" height = "400" alt = "试验梁尺寸" title = "试验梁尺寸">
 </div>
 <p align = "center"><b>试验梁尺寸</b></p>
 <br>
