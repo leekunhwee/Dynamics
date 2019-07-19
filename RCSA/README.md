@@ -1,3 +1,5 @@
+* Example
+  * 一个应用实例
 * RCSA_FRF.m
   * 绘制子结构各自的频响函数，及耦合后的频响函数
 * RCSA_Flexible.m
