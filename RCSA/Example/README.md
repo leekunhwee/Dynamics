@@ -1,55 +1,81 @@
-# 关于Beam Experiment Platform的实验及结果分析
-这是一个简化的子结构和逆子结构试验，但思想具有普遍性，可以用于刀具刀柄的计算。
-
-## 实验材料及设备
-7075铝合金制成的底座、夹持套和三个不同的细长梁
-
+# Experiment verification of Receptance Coupling Substructure Analysis
+This a simplified experiment to verify the Receptance Coupling Substructure Analysis (RCSA) methods which can be applied to the Frequency Receptance Functions (FRFs) measurement of tool holder with different tools.
+## Experimental materials
+Three different types cylindrical beam made by 7075 aluminum and clamp equipment.
 <br>
-<div align = "center">  
-<img src = "Beam.png"  width = "600" height = "400" alt = "试验梁尺寸" title = "试验梁尺寸">
+<div align = "center">
+<img src = "Beam.png"  width = "600" height = "400" alt = "Parameters of Cantilever Beam" title = "Parameters of Cantilever Beam">
 </div>
-<p align = "center"><b>试验梁尺寸</b></p>
+<p align = "center"><b>Parameters of Cantilever Beam</b></p>
 <br>
 
 
-1. 长为190mm，直径为16mm 梁b
-2. 长为140mm，直径为16mm 梁c
-3. 长为190mm，140mm段长的直径为16mm，50mm段长直径为10mm 梁d
+1. Beam b. Length:190 mm, Diameter:16 mm;
+2. Beam c. Length:140 mm, Diameter:16 mm;
+3. Beam d. Section I, Length:140mm, Diameter:16mm; Section II, Length:50mm, Diameter:16mm.
 
-加持长度均为10mm
 
-为了通过子结构耦合法计算耦合不同结构后的组合体自由端的频响G00，先要利用逆子结构法获得剔除一段之后的自由端整体频响G33。但要想得到G33，先要知道运用逆子结构法所需的几个值：未剔除之前的自由端整体频响G11，以及被剔除部分在自由状态下的两端整体原点及跨点频响R11、R22、R12、R21，当剔除部分的形状规则时，R11、R22、R12、R21很容易由理论计算方法得到，但G11还需在用实验方法得到剔除前的端点处原点频响H11和距端点S的K点跨点频响H12之后方能计算得到，这里采用一阶差分法。
+## Experiment methods：
+For simplification of modelling process and comparison between experiment and theoretical results, the cantilever beams was used to conduct experiment.
 
-## 实验思路：
-利用悬臂梁b的自由端处原点位移/力频响b-H11和距自由端50mm（可以是其他值，这里与剔除长度相同是一个巧合）的K点处的跨点位移/力频响b-H12以及自由端到K点的距离S，通过逆子结构法进行计算得到剔除50mm后的端点频响，并与c-H11比较。然后通过子结构法耦合一段50mm，直径是10mm的梁，得到端点频响，并与d-H11比较。
+In order to predict the FRFs at the free end of cantilever beam d from the tap testing data of cantilever beam b, RCSA method was applied.
 
-## 程序的解释
-1.	ReadData.m
-读取BEP0620.xls 文件中的试验频响，注意这里的频响单位，可能不同试验的单位不同。
-结果存为BEPData.mat文件，里面包括，梁b的原点、跨点位移/力频响：b_190_h11NEW、b_190_h12NEW；梁c的原点位移/力频响：c_140_h11NEW；梁d的原点、跨点位移/力频响：d_190_h11NEW、d_190_h12NEW。
+The difference between beam b and beam d is the Section II where the diameter of the cylindrical beam changed. Therefore, if the end FRFs of the same section (i.e. the FRFs at the end of cantilever beam c) can be calculated based on the tap testing data get from cantilever beam b, then the FRFs at the of cantilever beam b can be obtained by using RCSA method to coupling a beam with length 50 mm and diameter 10 mm to the cantilever beam c.
+
+In order to get the FRFs at the free end of cantilever beam c (denoted as G00) based on the tap testing data at the free end of cantilever beam b, inverse RCSA method was used. The different section between cantilever beam c and cantilever beam b is a cylindrical beam with length of 50 mm and diameter of 16 mm. The FRFs of this part in free-free condition can be calculated using Timoshenko beam model, including direct FRFs and cross FRFs, i.e. RB11, RB12, RB21 and RB22.
+If the FRFs at the end of cantilever beam b called G11, then G00 can be obtained by:
+$${G_{00}} = R{B_{21}}{\left( {R{B_{11}} - {G_{11}}} \right)^{ - 1}}R{B_{12}} - R{B_{22}} \tag {1}$$
+
+The G_11 contains four entries:
+$$
+{G_{11}} = \left[ {\begin{array}{*{20}{c}}
+{{H_{11}}}&{{L_{11}}}\\
+{{N_{11}}}&{{P_{11}}}
+\end{array}} \right] = \left[ {\begin{array}{*{20}{c}}
+{{X_1}/{F_1}}&{{X_1}/{M_1}}\\
+{{\Theta _1}/{F_1}}&{{\Theta _1}/{M_1}}
+\end{array}} \right] \tag {2}$$
+where X1  and θ1 are the displacement and rotational angle at the free end of cantilever beam b respectively, while F1 and M1 are the force and moment applied at the free end of cantilever beam b respectively.
+
+However, only H11 can be directly obtained by tap testing, other entries of G11 can be evaluated as:
+$$ {L_{11}} = {N_{11}} = \frac{{\left( {{H_{11}} - {H_{12}}} \right)}}{s} \tag {3}$$
+where s is the cross distant of cross FRF H12 between point K (as shown in the figure above) and the free end of the cantilever beam b.
+$${P_{11}} = \frac{{{\Theta _1}}}{{{M_1}}} = \frac{{{F_1}}}{{{X_1}}}\frac{{{X_1}}}{{{M_1}}}\frac{{{\Theta _1}}}{{{F_1}}} = \frac{1}{{{H_{11}}}}{L_{11}}{N_{11}} = \frac{{N_{11}^2}}{{{H_{11}}}} \tag {4}$$
+
+After obtaining the G00, the FRFs at the free end of cantilever beam d (denoted as G22) can be obtained by coupling a cylindrical beam with length of 50 mm and diameter of 10 mm using RCSA method. The FRFs of this part in free-free condition can be calculated using Timoshenko beam model, including direct FRFs and cross FRFs, i.e. RD11, RD12, RD21 and RD22.
+Then G22 can be obtained by:
+$${G_{22}} = R{D_{11}} - R{D_{12}}{\left( {{G_{00}} + R{D_{22}}} \right)^{ - 1}}R{D_{21}} \tag{5}$$
+
+## Explanation of the MATLAB Code
+1.	BEPData.mat
+This file includes the direct and cross Displacement/Force FRFs at the free and of cantilever beam b measured by tap testing: 190_h11NEW、b_190_h12NEW; The direct Displacement/Force FRF at the free and of cantilever beam c measured by tap testing: c_140_h11NEW; The direct Displacement/Force FRF at the free and of cantilever beam c measured by tap testing: d_190_h11NEW. 
+
 2.	TheoreticalFRF.m
-用Timoshenko梁理论计算梁的频响。结果存为Beam_Theoretical.mat文件，里面包括190mm φ16mm 圆柱悬臂梁的理论端点频响RA；50mm φ16mm 圆柱两端自由梁的理论两端原点跨点频响RB11、RB12、RB21、RB22；140mm φ16mm 圆柱悬臂梁的理论端点频响RC；50mm φ10mm 圆柱两端自由梁的理论两端原点跨点频响RD11、RD12、RD21、RD22。
-里面涉及函数Beam_FRF.m 和 函数 timo_free_free.m ，用于Timoshenko梁计算。
-3.	CompareRCSA.m 是将140mm φ16mm 圆柱悬臂梁与50mm φ16mm 圆柱两端自由梁耦合得到G11RCSA，并与试验结果b_190_h11NEW比较；
-涉及函数RCSA.m ，即子结构耦合计算方法。
-<br>
-<div align = "center">  
-<img src = "CompareRCSA.png"  width = "600" height = "400" alt = "子结构方法验证" title = "子结构方法验证">
+Theoretical FRFs calculated by Timoshenko beam model. The results was saved as Beam_Theoretical.mat file, which includes FRFs at the free end of a cylindrical cantilever beam with length 190 mm and diameter 16 mm (i.e. RA); Direct and cross FRFs of a cylindrical free-free beam with length 50 mm and diameter 16 mm (i.e. RB11, RB12, RB21 and RB22); FRFs at the free end of a cylindrical cantilever beam with length 140 mm and diameter 16 mm (i.e. RC); Direct and cross FRFs of a cylindrical free-free beam with length 50 mm and diameter 10 mm (i.e. RD11, RD12, RD21 and RD22)。
+Involving the function Beam_FRF.m and timo_free_free.m are the algorithms of FRFs’ calculation based on Timoshenko beam theory.
+
+3.	CompareRCSA.m
+Coupling a cylindrical cantilever beam (length: 140 mm, diameter: 16 mm) with another cylindrical free-free beam (length: 50 mm, diameter 16 mm) and obtained the FRFs at the free end of the cylindrical cantilever beam b, G11RCSA, then compared with the experimental results b_190_h11NEW.
+Involving the function RCSA.m which is the algorithms of RCSA.
+<div align = "center">
+<img src = "CompareRCSA.png"  width = "600" height = "400" alt = "Verification of RCSA" title = "Verification of RCSA">
 </div>
-<p align = "center"><b>子结构方法验证</b></p>
+<p align = "center"><b>Verification of RCSA</b></p>
 <br>
-4.	CompareIRCSA.m 是通过逆子结构法由190mm φ16mm 圆柱悬臂梁的试验频响剔除50mm，得到140mm φ16mm 圆柱悬臂梁的端点频响G11IRCSA，并与试验结果c_140_h11NEW比较。并将结果存为IRCSA，包含剔除后的端点频响G11IRCSA等。
-涉及函数Experimental_IRCSA.m 和 IRCSA.m，即逆子结构耦合计算方法。
-<br>
-<div align = "center">  
-<img src = "CompareIRCSA.png"  width = "600" height = "400" alt = "逆子结构方法验证" title = "逆子结构方法验证">
+
+4.	CompareIRCSA.m
+Decoupling a cylindrical free-free beam (length: 50 mm, diameter 16 mm) from a cylindrical cantilever beam (length: 190 mm, diameter: 16 mm) by inverse RCSA method and obtained the FRFs at the free end of the cylindrical cantilever beam c, G11IRCSA, then compared with the experimental results c_140_h11NEW. The results was saved as IRCSA.mat.
+Involving the function Experimental_IRCSA.m and IRCSA.m are the algorithms of inverse RCSA method.
+<div align = "center">
+<img src = "CompareIRCSA.png"  width = "600" height = "400" alt = "Verification of Inverse RCSA" title = "Verification of Inverse RCSA">
 </div>
-<p align = "center"><b>逆子结构方法验证</b></p>
+<p align = "center"><b>Verification of Inverse RCSA</b></p>
 <br>
-5.	CompareFinalResults.m 是将190mm φ16mm 圆柱悬臂梁剔除50mm后再耦合上50mm φ10mm 圆柱梁，用子结构法计算端点频响，并与试验结果d_190_h11NEW比较。验证逆子结构的可靠性。
-<br>
-<div align = "center">  
-<img src = "CompareFinalResults.png"  width = "600" height = "400" alt = "综合验证" title = "综合验证">
+
+5.	CompareFinalResults.m
+Based on the G11IRCSA obtained above, the RCSA method was applied to coupling a cylindrical free-free beam (length: 50 mm, diameter 10 mm) to obtain the FRFs at the free end of a cylindrical cantilever stepped beam d, then compared with the experimental results d_190_h11NEW.
+<div align = "center">
+<img src = "CompareFinalResults.png"  width = "600" height = "400" alt = "Comprehensive Verification" title = "Comprehensive Verificationc">
 </div>
-<p align = "center"><b>综合验证</b></p>
+<p align = "center"><b>Comprehensive Verification</b></p>
 <br>
