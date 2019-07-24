@@ -32,15 +32,17 @@ $$
 {{H_{11}}}&{{L_{11}}}\\
 {{N_{11}}}&{{P_{11}}}
 \end{array}} \right] = \left[ {\begin{array}{*{20}{c}}
-{{X_1}/{F_1}}&{{X_1}/{M_1}}\\
-{{\Theta _1}/{F_1}}&{{\Theta _1}/{M_1}}
-\end{array}} \right] \tag {2}$$
+{\frac{{{X_1}}}{{{F_1}}}}&{\frac{{{X_1}}}{{{M_1}}}}\\
+{\frac{{{\Theta _1}}}{{{F_1}}}}&{\frac{{{\Theta _1}}}{{{M_1}}}}
+\end{array}} \right]  \tag {2}
+$$
+
 where X1  and θ1 are the displacement and rotational angle at the free end of cantilever beam b respectively, while F1 and M1 are the force and moment applied at the free end of cantilever beam b respectively.
 
 However, only H11 can be directly obtained by tap testing, other entries of G11 can be evaluated as:
 $$ {L_{11}} = {N_{11}} = \frac{{\left( {{H_{11}} - {H_{12}}} \right)}}{s} \tag {3}$$
 where s is the cross distant of cross FRF H12 between point K (as shown in the figure above) and the free end of the cantilever beam b.
-$${P_{11}} = \frac{{{\Theta _1}}}{{{M_1}}} = \frac{{{F_1}}}{{{X_1}}}\frac{{{X_1}}}{{{M_1}}}\frac{{{\Theta _1}}}{{{F_1}}} = \frac{1}{{{H_{11}}}}{L_{11}}{N_{11}} = \frac{{N_{11}^2}}{{{H_{11}}}} \tag {4}$$
+$${P_{11}} = \frac{\Theta _1}{M_1} = \frac{F_1}{X_1}\frac{X_1}{M_1}\frac{\Theta _1}{F_1} = \frac{1}{H_{11}}{L_{11}}{N_{11}} = \frac{{N_{11}^2}}{H_{11}} \tag {4}$$
 
 After obtaining the G00, the FRFs at the free end of cantilever beam d (denoted as G22) can be obtained by coupling a cylindrical beam with length of 50 mm and diameter of 10 mm using RCSA method. The FRFs of this part in free-free condition can be calculated using Timoshenko beam model, including direct FRFs and cross FRFs, i.e. RD11, RD12, RD21 and RD22.
 Then G22 can be obtained by:
@@ -48,7 +50,7 @@ $${G_{22}} = R{D_{11}} - R{D_{12}}{\left( {{G_{00}} + R{D_{22}}} \right)^{ - 1}}
 
 ## Explanation of the MATLAB Code
 1.	BEPData.mat
-This file includes the direct and cross Displacement/Force FRFs at the free and of cantilever beam b measured by tap testing: 190_h11NEW、b_190_h12NEW; The direct Displacement/Force FRF at the free and of cantilever beam c measured by tap testing: c_140_h11NEW; The direct Displacement/Force FRF at the free and of cantilever beam c measured by tap testing: d_190_h11NEW. 
+This file includes the direct and cross Displacement/Force FRFs at the free and of cantilever beam b measured by tap testing: 190_h11NEW、b_190_h12NEW; The direct Displacement/Force FRF at the free and of cantilever beam c measured by tap testing: c_140_h11NEW; The direct Displacement/Force FRF at the free and of cantilever beam c measured by tap testing: d_190_h11NEW.
 
 2.	TheoreticalFRF.m
 Theoretical FRFs calculated by Timoshenko beam model. The results was saved as Beam_Theoretical.mat file, which includes FRFs at the free end of a cylindrical cantilever beam with length 190 mm and diameter 16 mm (i.e. RA); Direct and cross FRFs of a cylindrical free-free beam with length 50 mm and diameter 16 mm (i.e. RB11, RB12, RB21 and RB22); FRFs at the free end of a cylindrical cantilever beam with length 140 mm and diameter 16 mm (i.e. RC); Direct and cross FRFs of a cylindrical free-free beam with length 50 mm and diameter 10 mm (i.e. RD11, RD12, RD21 and RD22)。
