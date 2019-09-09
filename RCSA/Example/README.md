@@ -1,5 +1,5 @@
 # Experiment verification of Receptance Coupling Substructure Analysis
-This a simplified experiment to verify the Receptance Coupling Substructure Analysis (RCSA) methods which can be applied to the Frequency Receptance Functions (FRFs) measurement of tool holder with different tools.
+This a simplified experiment to verify the Receptance Coupling Substructure Analysis (RCSA) methods which can be applied to the Frequency Receptance Functions ($FRFs$) measurement of tool holder with different tools.
 ## Experimental materials
 Three different types cylindrical beam made by 7075 aluminum and clamp equipment.
 <br>
@@ -27,15 +27,9 @@ If the FRFs at the end of cantilever beam b called G11, then G00 can be obtained
 $${G_{00}} = R{B_{21}}{\left( {R{B_{11}} - {G_{11}}} \right)^{ - 1}}R{B_{12}} - R{B_{22}} \tag {1}$$
 
 The G_11 contains four entries:
-$$
-{G_{11}} = \left[ {\begin{array}{*{20}{c}}
-{{H_{11}}}&{{L_{11}}}\\
-{{N_{11}}}&{{P_{11}}}
-\end{array}} \right] = \left[ {\begin{array}{*{20}{c}}
-{\frac{{{X_1}}}{{{F_1}}}}&{\frac{{{X_1}}}{{{M_1}}}}\\
-{\frac{{{\Theta _1}}}{{{F_1}}}}&{\frac{{{\Theta _1}}}{{{M_1}}}}
-\end{array}} \right]  \tag {2}
-$$
+$$ G_{11}=\begin{bmatrix}{H_{11}}&{L_{11}}\\\
+{N_{11}}&{P_{11}}\end{bmatrix} = \begin{bmatrix}{\frac{{{X_1}}}{{{F_1}}}}&{\frac{X_1}{M_1}} \\\
+{\frac{\Theta _1}{F_1}} & {\frac{\Theta _1}{M_1}} \end{bmatrix}$$
 
 where X1  and θ1 are the displacement and rotational angle at the free end of cantilever beam b respectively, while F1 and M1 are the force and moment applied at the free end of cantilever beam b respectively.
 
