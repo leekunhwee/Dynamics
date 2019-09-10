@@ -25,7 +25,7 @@ The difference between beam $b$ and beam $d$ is the Section II where the diamete
 In order to get the FRFs at the free end of cantilever beam $c$ (denoted as $G_{00}$) based on the tap testing data at the free end of cantilever beam $b$, inverse $RCSA$ method was used. The different section between cantilever beam $c$ and cantilever beam $b$ is a cylindrical beam with length of 50 mm and diameter of 16 mm. The $FRFs$ of this part in free-free condition can be calculated using Timoshenko beam model, including direct $FRFs$ and cross $FRFs$, i.e. $RB_{11}$, $RB_{12}$, $RB_{21}$ and $RB_{22}$.
 If the $FRFs$ at the end of cantilever beam $b$ called $G_{11}$, then $G_{00}$ can be obtained by:
 
-$${G_{00}} = {RB}_{21}{\left( {RB}_{11} - {G_{11}} \right)^{ - 1}}{RB}_{12} - {RB}_{22} \tag {1}$$
+$${G_{00}} = R{B_{21}}{\left( R{B_{11}} - {G_{11}} \right)^{ - 1}}R{B_{12}} - R{B_{22}} \tag {1}$$
 
 The $G_{11}$ contains four entries:
 $$ G_{11}=\begin{bmatrix}{H_{11}}&{L_{11}}\\\\
@@ -43,7 +43,7 @@ where $s$ is the cross distant of cross $FRF$ ---- $H_{12}$ between point $K$ (a
 $$ P_{11} = \frac{\Theta_1}{M_1} = {\frac{F_1}{X_1}} {\frac{X_1}{M_1}} {\frac{\Theta_1}{F_1}} = {\frac{1}{H_{11}}}{L_{11}}{N_{11}} = {\frac{{N_{11}^2}}{H_{11}}} \tag {4} $$
 
 
-After obtaining the $G_{00}$, the $FRFs$ at the free end of cantilever beam $d$ (denoted as $G_{22}$) can be obtained by coupling a cylindrical beam with length of $50$ mm and diameter of $10$ mm using $RCSA$ method. The $FRFs$ of this part in free-free condition can be calculated using Timoshenko beam model, including direct $FRFs$ and cross $FRFs$, i.e. ${RD}_{11}$, ${RD}_{12}$, ${RD}_{21}$ and ${RD}_{22}$.
+After obtaining the $G_{00}$, the $FRFs$ at the free end of cantilever beam $d$ (denoted as $G_{22}$) can be obtained by coupling a cylindrical beam with length of $50$ mm and diameter of $10$ mm using $RCSA$ method. The $FRFs$ of this part in free-free condition can be calculated using Timoshenko beam model, including direct $FRFs$ and cross $FRFs$, i.e. $R{D_{11}}$, $R{D_{12}}$, $R{D_{21}}$ and $R{D_{22}}$.
 Then $G_{22}$ can be obtained by:
 $${G_{22}} = R{D_{11}} - R{D_{12}}{\left( {{G_{00}} + R{D_{22}}} \right)^{ - 1}}R{D_{21}} \tag{5}$$
 
