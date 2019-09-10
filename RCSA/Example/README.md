@@ -1,7 +1,7 @@
 # Experiment verification of Receptance Coupling Substructure Analysis
 This a simplified experiment to verify the Receptance Coupling Substructure Analysis ($RCSA$) methods which can be applied to the Frequency Receptance Functions ($FRFs$) measurement of tool holder with different tools.
 ## Experimental materials
-Three different types cylindrical beam made by 7075 aluminum and clamp equipment.
+Three different types cylindrical beam made by $7075$ aluminum and clamp equipment.
 <br>
 <div align = "center">
 <img src = "Beam.png"  width = "600" height = "400" alt = "Parameters of Cantilever Beam" title = "Parameters of Cantilever Beam">
@@ -10,9 +10,9 @@ Three different types cylindrical beam made by 7075 aluminum and clamp equipment
 <br>
 
 
-1. Beam $b$. Length:190 mm, Diameter:16 mm;
-2. Beam $c$. Length:140 mm, Diameter:16 mm;
-3. Beam $d$. Section I, Length:140mm, Diameter:16mm; Section II, Length:50mm, Diameter:16mm.
+1. Beam $b$. Length:$190$ mm, Diameter:$16$ mm;
+2. Beam $c$. Length:$140$ mm, Diameter:$16$ mm;
+3. Beam $d$. Section $I$, Length:$140$mm, Diameter:16mm; Section $II$, Length:$50$mm, Diameter:$16$mm.
 
 
 ## Experiment methods：
@@ -24,12 +24,13 @@ The difference between beam $b$ and beam $d$ is the Section II where the diamete
 
 In order to get the FRFs at the free end of cantilever beam $c$ (denoted as $G_{00}$) based on the tap testing data at the free end of cantilever beam $b$, inverse $RCSA$ method was used. The different section between cantilever beam $c$ and cantilever beam $b$ is a cylindrical beam with length of 50 mm and diameter of 16 mm. The $FRFs$ of this part in free-free condition can be calculated using Timoshenko beam model, including direct $FRFs$ and cross $FRFs$, i.e. $RB_{11}$, $RB_{12}$, $RB_{21}$ and $RB_{22}$.
 If the $FRFs$ at the end of cantilever beam $b$ called $G_{11}$, then $G_{00}$ can be obtained by:
-$${G_{00}} = R{B_{21}}{\left( {R{B_{11}} - {G_{11}}} \right)^{ - 1}}R{B_{12}} - R{B_{22}} \tag {1}$$
+
+$${G_{00}} = {RB}_{21}{\left( {RB}_{11} - {G_{11}} \right)^{ - 1}}{RB}_{12} - {RB}_{22} \tag {1}$$
 
 The $G_{11}$ contains four entries:
-$$ G_{11}=\begin{pmatrix}{H_{11}}&{L_{11}}\\\
-{N_{11}}&{P_{11}}\end{pmatrix} = \begin{pmatrix}{\frac{{{X_1}}}{{{F_1}}}}&{\frac{X_1}{M_1}} \\\
-{\frac{\Theta _1}{F_1}} & {\frac{\Theta _1}{M_1}} \end{pmatrix}$$
+$$ G_{11}=\begin{bmatrix}{H_{11}}&{L_{11}}\\\\
+{N_{11}}&{P_{11}}\end{bmatrix} = \begin{bmatrix}{\frac{{{X_1}}}{{{F_1}}}}&{\frac{X_1}{M_1}} \\\\
+{\frac{\Theta _1}{F_1}} & {\frac{\Theta _1}{M_1}} \end{bmatrix}$$
 
 where $X_1$ and $\Theta_1$ are the displacement and rotational angle at the free end of cantilever beam $b$ respectively, while $F_1$ and $M_1$ are the force and moment applied at the free end of cantilever beam $b$ respectively.
 
@@ -37,13 +38,13 @@ However, only $H_{11}$ can be directly obtained by tap testing, other entries of
 
 $$ {L_{11}} = {N_{11}} = \frac{\left( {{H_{11}} - {H_{12}}} \right)}{s} \tag {3}$$
 
-where s is the cross distant of cross $FRF$ ---- $H_{12}$ between point $K$ (as shown in the figure above) and the free end of the cantilever beam $b$.
+where $s$ is the cross distant of cross $FRF$ ---- $H_{12}$ between point $K$ (as shown in the figure above) and the free end of the cantilever beam $b$.
 
 $$ P_{11} = \frac{\Theta_1}{M_1} = {\frac{F_1}{X_1}} {\frac{X_1}{M_1}} {\frac{\Theta_1}{F_1}} = {\frac{1}{H_{11}}}{L_{11}}{N_{11}} = {\frac{{N_{11}^2}}{H_{11}}} \tag {4} $$
 
 
-After obtaining the G00, the FRFs at the free end of cantilever beam d (denoted as G22) can be obtained by coupling a cylindrical beam with length of 50 mm and diameter of 10 mm using RCSA method. The FRFs of this part in free-free condition can be calculated using Timoshenko beam model, including direct FRFs and cross FRFs, i.e. RD11, RD12, RD21 and RD22.
-Then G22 can be obtained by:
+After obtaining the $G_{00}$, the $FRFs$ at the free end of cantilever beam $d$ (denoted as $G_{22}$) can be obtained by coupling a cylindrical beam with length of $50$ mm and diameter of $10$ mm using $RCSA$ method. The $FRFs$ of this part in free-free condition can be calculated using Timoshenko beam model, including direct $FRFs$ and cross $FRFs$, i.e. ${RD}_{11}$, ${RD}_{12}$, ${RD}_{21}$ and ${RD}_{22}$.
+Then $G_{22}$ can be obtained by:
 $${G_{22}} = R{D_{11}} - R{D_{12}}{\left( {{G_{00}} + R{D_{22}}} \right)^{ - 1}}R{D_{21}} \tag{5}$$
 
 ## Explanation of the MATLAB Code
