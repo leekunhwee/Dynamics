@@ -12,7 +12,7 @@ Three different types cylindrical beam made by $7075$ aluminum and clamp equipme
 
 1. Beam $b$. Length:$190$ mm, Diameter:$16$ mm;
 2. Beam $c$. Length:$140$ mm, Diameter:$16$ mm;
-3. Beam $d$. Section $I$, Length:$140$mm, Diameter:16mm; Section $II$, Length:$50$mm, Diameter:$16$mm.
+3. Beam $d$. Section $I$, Length:$140$mm, Diameter:$16$mm; Section $II$, Length:$50$mm, Diameter:$16$mm.
 
 
 ## Experiment methods：
@@ -20,9 +20,9 @@ For simplification of modelling process and comparison between experiment and th
 
 In order to predict the $FRFs$ at the free end of cantilever beam $d$ from the tap testing data of cantilever beam $b$, $RCSA$ method was applied.
 
-The difference between beam $b$ and beam $d$ is the Section II where the diameter of the cylindrical beam changed. Therefore, if the end $FRFs$ of the same section (i.e. the $FRFs$ at the end of cantilever beam $c$) can be calculated based on the tap testing data get from cantilever beam $b$, then the $FRFs$ at the of cantilever beam $b$ can be obtained by using $RCSA$ method to coupling a beam with length 50 mm and diameter 10 mm to the cantilever beam $c$.
+The difference between beam $b$ and beam $d$ is the Section II where the diameter of the cylindrical beam changed. Therefore, if the end $FRFs$ of the same section (i.e. the $FRFs$ at the end of cantilever beam $c$) can be calculated based on the tap testing data get from cantilever beam $b$, then the $FRFs$ at the of cantilever beam $b$ can be obtained by using $RCSA$ method to coupling a beam with length $50$ mm and diameter $10$ mm to the cantilever beam $c$.
 
-In order to get the FRFs at the free end of cantilever beam $c$ (denoted as $G_{00}$) based on the tap testing data at the free end of cantilever beam $b$, inverse $RCSA$ method was used. The different section between cantilever beam $c$ and cantilever beam $b$ is a cylindrical beam with length of 50 mm and diameter of 16 mm. The $FRFs$ of this part in free-free condition can be calculated using Timoshenko beam model, including direct $FRFs$ and cross $FRFs$, i.e. $RB_{11}$, $RB_{12}$, $RB_{21}$ and $RB_{22}$.
+In order to get the FRFs at the free end of cantilever beam $c$ (denoted as $G_{00}$) based on the tap testing data at the free end of cantilever beam $b$, inverse $RCSA$ method was used. The different section between cantilever beam $c$ and cantilever beam $b$ is a cylindrical beam with length of $50$ mm and diameter of $16$ mm. The $FRFs$ of this part in free-free condition can be calculated using Timoshenko beam model, including direct $FRFs$ and cross $FRFs$, i.e. $RB_{11}$, $RB_{12}$, $RB_{21}$ and $RB_{22}$.
 If the $FRFs$ at the end of cantilever beam $b$ called $G_{11}$, then $G_{00}$ can be obtained by:
 
 $${G_{00}} = R{B_{21}}{\left( R{B_{11}} - {G_{11}} \right)^{ - 1}}R{B_{12}} - R{B_{22}} \tag {1}$$
