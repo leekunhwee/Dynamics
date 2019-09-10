@@ -10,4 +10,4 @@
 <br>
 <br>
 
-### In order to show the equations in a proper way, please use Chrome Browser and add the plugin "[MathJax Plugin for Github](https://chrome.google.com/webstore/detail/mathjax-plugin-for-github/ioemnmodlmafdkllaclgeombjnmnbima "MathJax Plugin for Github"){:target = " _blank"}"
+### In order to show the equations in a proper way, please use Chrome Browser and add the plugin "[MathJax Plugin for Github](https://chrome.google.com/webstore/detail/mathjax-plugin-for-github/ioemnmodlmafdkllaclgeombjnmnbima "MathJax Plugin for Github")"
