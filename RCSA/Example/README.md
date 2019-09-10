@@ -39,7 +39,7 @@ $$ {L_{11}} = {N_{11}} = \frac{\left( {{H_{11}} - {H_{12}}} \right)}{s} \tag {3}
 
 where s is the cross distant of cross $FRF$ ---- $H_{12}$ between point $K$ (as shown in the figure above) and the free end of the cantilever beam $b$.
 
-$$ P_{11} = \frac{\Theta _1}{M_1} = {\frac{F_1}{X_1}} {\frac{X_1}{M_1}} {\frac{\Theta _1}{F_1}} = {\frac{1}{H_{11}}}{L_{11}}{N_{11}} = {\frac{{N_{11}^2}}{H_{11}}} \tag {4} $$
+$$ P_{11} = \frac{\Theta_1}{M_1} = {\frac{F_1}{X_1}} {\frac{X_1}{M_1}} {\frac{\Theta_1}{F_1}} = {\frac{1}{H_{11}}}{L_{11}}{N_{11}} = {\frac{{N_{11}^2}}{H_{11}}} \tag {4} $$
 
 
 After obtaining the G00, the FRFs at the free end of cantilever beam d (denoted as G22) can be obtained by coupling a cylindrical beam with length of 50 mm and diameter of 10 mm using RCSA method. The FRFs of this part in free-free condition can be calculated using Timoshenko beam model, including direct FRFs and cross FRFs, i.e. RD11, RD12, RD21 and RD22.
