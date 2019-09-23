@@ -120,14 +120,21 @@ Kf=1000e6;          % N/m^2
 blim = -1./(2*Kf*FRF_real);  % m
 blim = blim*1e3;        % convert to mm
 
-% Calculate epsilon
+%% Calculate epsilon (1)
+% for cnt = 1:length(FRF_imag)
+%     if FRF_imag(cnt)<0
+%         epsilon(cnt)=2*pi-2*atan(abs(FRF_real(cnt)/FRF_imag(cnt)));
+%     else
+%         epsilon(cnt)=pi-2*atan(abs(FRF_imag(cnt)/FRF_real(cnt)));
+%     end
+% end
+%% %% Calculate epsilon (2)
 for cnt = 1:length(FRF_imag)
-    if FRF_imag(cnt)<0
-        epsilon(cnt)=2*pi-2*atan(abs(FRF_real(cnt)/FRF_imag(cnt)));
-    else
-        epsilon(cnt)=pi-2*atan(abs(FRF_imag(cnt)/FRF_real(cnt)));
-    end
+    phi = atan(abs(FRF_real(cnt)/FRF_imag(cnt)));
+    
 end
+    
+
 
 
 % Calculate spindle speeds for N = 0 to 2
