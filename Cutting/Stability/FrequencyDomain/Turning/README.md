@@ -4,10 +4,10 @@ A shaping process with a two-degree-of-freedom (2-DOF) system is shown in Figure
 
 $$
 \begin{array}{c|lcr}
-\text{Direction} & \text{ωn} & \text{ζ} & \text{k} \\\\
+\text{Direction} & \text{ωn} & \text{ζ} &  \text{k} \\\\
 \hline
-x1 & ωn1 = 250Hz & ζ1 = 1.2\  \%  & k1 = 2.26×108 N/m \\\\
-x2 & ωn2 = 150Hz & ζ2 = 1.0\  \% & k2 = 2.13×108 N/m
+x1 & ωn1 = 250Hz & ζ1 = 1.2  & k1 = 2.26×108 N/m \\\\
+x2 & ωn2 = 150Hz & ζ2 = 1.0  & k2 = 2.13×108 N/m
 \end{array}
 $$
 
@@ -55,12 +55,12 @@ $$\tan \psi  = \frac{{H\left( {{\omega _c}} \right)}}{{G\left( {{\omega _c}} \ri
 
 The phase difference between the inner and outer modulation should be:
 $$\begin{gathered}
-  \varepsilon {\text{ = }}2\pi  - 2{\tan ^{{\text{ - }}1}}\left( {\frac{G}{H}} \right)\;\;\;H < 0 \ \\
-  \varepsilon {\text{ = }}\pi  - 2{\tan ^{{\text{ - }}1}}\left( {\frac{H}{G}} \right)\;\;\;H > 0  \\ 
+  \varepsilon {\text{ = }}2\pi  - 2{\tan ^{{\text{ - }}1}}\left( {\frac{G}{H}} \right)\;H < 0 \ \\
+  \varepsilon {\text{ = }}\pi  - 2{\tan ^{{\text{ - }}1}}\left( {\frac{H}{G}} \right)\;H > 0  \\ 
 \end{gathered} $$
 
 The rotation speed should be:
-$$\Omega {\text{ = }}\frac{{2\pi {f_c}}}{{2\pi k + \varepsilon }}\;\;\;\;\;\;k = 0,1,2...$$
+$$\Omega {\text{ = }}\frac{{2\pi {f_c}}}{{2\pi k + \varepsilon }}\;k = 0,1,2...$$
 
 The stability lobes are given in Figure 4.
 
