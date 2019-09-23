@@ -55,8 +55,8 @@ $$\tan \psi  = \frac{{H\left( {{\omega _c}} \right)}}{{G\left( {{\omega _c}} \ri
 
 The phase difference between the inner and outer modulation should be:
 $$\begin{gathered}
-  \varepsilon {\text{ = }}2\pi  - 2{\tan ^{{\text{ - }}1}}\left( {\frac{G}{H}} \right)\;H < 0 \ \\
-  \varepsilon {\text{ = }}\pi  - 2{\tan ^{{\text{ - }}1}}\left( {\frac{H}{G}} \right)\;H > 0  \\ 
+  \varepsilon {\text{ = }}2\pi  - 2{\tan ^{{\text{ - }}1}}\left( {\frac{G}{H}} \right)\;H < 0  \\\\
+  \varepsilon {\text{ = }}\pi  - 2{\tan ^{{\text{ - }}1}}\left( {\frac{H}{G}} \right)\;H > 0  
 \end{gathered} $$
 
 The rotation speed should be:
