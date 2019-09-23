@@ -30,11 +30,11 @@ $$h\left( s \right) = {h _0} + \left( {{e^{ - sT}} - 1} \right){K _f}ah\left( s 
 $$\frac{{h\left( s \right)}}{{{h_0}}} = \frac{1}{{1 + \left( {1 - {e^{ - sT}}} \right){K_f}a\Phi \left( s \right)}}$$
 如图$1$所示闭环系统。那么，该闭环系统的稳定性由传递函数特征多项式（即传递函数的分母）的根决定。
 令特征多项式为$0$：
-$$1 + \left( {1 - {e^{ - j{\omega _c}T}}} \right){K_f}{a_{\lim }}\Phi \left( {j{\omega _c}} \right) = 0$$
+$$1 + \left( {1 - {e^{ - j{\omega _c}T}}} \right){K _f}{a_{\lim }}\Phi \left( {j{\omega _c}} \right) = 0$$
 
 由于传递函数为复值函数，令  。
 上式可展开为：
-$$\left\{ {1 + {K_f}{a_{\lim }}\left[ {G\left( {1 - \cos {\omega _c}T} \right) - H\sin {\omega _c}T} \right]} \right\} + j\left\{ {{K_f}{a_{\lim }}\left[ {G\sin {\omega _c}T + H\left( {1 - \cos {\omega _c}T} \right)} \right]} \right\} = 0$$
+$$\left\{ {1 + {K _f}{a _{\lim }}\left[ {G\left( {1 - \cos {\omega _c}T} \right) - H\sin {\omega _c}T} \right]} \right\} + j\left\{ {{K _f}{a _{\lim }}\left[ {G\sin {\omega _c}T + H\left( {1 - \cos {\omega _c}T} \right)} \right]} \right\} = 0$$
 实部虚部分别都得等于零，对于虚部有：
 $$G\sin {\omega _c}T + H\left( {1 - \cos {\omega _c}T} \right) = 0$$
 那么频响函数相位满足：
@@ -43,7 +43,7 @@ $$\tan \psi  = \frac{{H\left( {{\omega _c}} \right)}}{{G\left( {{\omega _c}} \ri
 由上面的公式可以看出：
 $$\begin{gathered}
   \psi  + k\pi  = \frac{{\left( {{\omega _c}T} \right)}}{2} - \frac{{\left( {3\pi } \right)}}{2}  \\\\
-  {\omega _c}T = 3\pi  + 2\psi  + 2k\pi {\kern 1pt} \left( {k = 0,1,2...} \right)  \\ 
+  {\omega _c}T = 3\pi  + 2\psi  + 2k\pi {\kern 1pt} \left( {k = 0,1,2...} \right)  \\
 \end{gathered} $$
 即，$\psi $  值的大小会影响${\omega _c}$的正负，需要保证频率为正。
 $$\begin{gathered}
