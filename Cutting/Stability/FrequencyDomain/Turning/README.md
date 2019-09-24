@@ -69,7 +69,7 @@ $$\varepsilon  = 3\pi  + 2\psi $$
 $$1 + {K_f}{a_{\lim }}\left[ {G\left( {1 - \cos {\omega _c}T} \right) - H\sin {\omega _c}T} \right] = 0$$
 
 $$\begin{gathered}
-  {a_{\lim }} = \frac{{ - 1}}{{{K_f}{a_{\lim }}\left[ {G\left( {1 - \cos {\omega _c}T} \right) - H\sin {\omega _c}T} \right]}} = \frac{{ - 1}}{{{K_f}{a_{\lim }}G\left[ {\left( {1 - \cos {\omega _c}T} \right) - \frac{H}{G}\sin {\omega _c}T} \right]}} \\\\
+  {a _{\lim }} = \frac{{ - 1}}{{{K _f}{a _{\lim }}\left[ {G\left( {1 - \cos {\omega _c}T} \right) - H\sin {\omega _c}T} \right]}} = \frac{{ - 1}}{{{K _f}{a _{\lim }}G\left[ {\left( {1 - \cos {\omega _c}T} \right) - \frac{H}{G}\sin {\omega _c}T} \right]}} \\\\
    = \frac{{ - 1}}{{2{K_f}G\left( {{\omega _c}} \right)}} \\\\
 \end{gathered} $$
 
