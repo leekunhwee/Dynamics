@@ -39,7 +39,7 @@ $$ \lbrace {1 + {K _f}{a _{\lim }}\left[ {G\left( {1 - \cos {\omega _c}T} \right
 $$G\sin {\omega _c}T + H\left( {1 - \cos {\omega _c}T} \right) = 0$$
 那么频响函数相位满足：
 $$\tan \psi  = \frac{{H\left( {{\omega _c}} \right)}}{{G\left( {{\omega _c}} \right)}} = \frac{{\sin {\omega _c}T}}{{\cos {\omega _c}T - 1}} =  - \frac{{\cos \left( {{\omega _c}\frac{T}{2}} \right)}}{{\sin \left( {{\omega _c}\frac{T}{2}} \right)}} = \tan \left[ {\frac{{\left( {{\omega _c}T} \right)}}{2} - \frac{{\left( {3\pi } \right)}}{2}} \right]$$
-这里需要注意的一点是这个$ - \frac{{3\pi }}{2}$ ，一般来说，都是取$ - \cot \alpha  = \tan \left( {\alpha  - \frac{\pi }{2}} \right)$ ，这样$\alpha$可以取$0~90^\circ$锐角。但试验发现，如果这样取，每阶包含负实部的模态都会引入一个多余的负频率解。
+这里需要注意的一点是这个$ - \frac{{3\pi }}{2}$ ，一般来说，都是取$ - \cot \alpha  = \tan \left( {\alpha  - \frac{\pi }{2}} \right)$ ，这样$\alpha$可以取$(0,90^\circ)$锐角。但试验发现，如果这样取，每阶包含负实部的模态都会引入一个多余的负频率解。
 由上面的公式可以看出：
 $$\begin{gathered}
   \psi  + k\pi  = \frac{{\left( {{\omega _c}T} \right)}}{2} - \frac{{\left( {3\pi } \right)}}{2}  \\\\
@@ -54,7 +54,7 @@ $$\begin{gathered}
 由此可知：
 $$\varepsilon  = 3\pi  + 2\psi $$
 如果上面不取$ - \frac{{3\pi }}{2}$而取其它值，则会造成负频率（大于$ - \frac{{3\pi }}{2}$时），或低阶$Lobe$缺失（小于$ - \frac{{3\pi }}{2}$时）。
-这是因为，$\psi $  值只能在$-180^{\circ} ~-90^\circ$之间变化。
+这是因为，$\psi $  值只能在$(-180^{\circ} ,-90^\circ)$之间变化。
 
 <div align = "center">
 
@@ -64,6 +64,20 @@ $$\varepsilon  = 3\pi  + 2\psi $$
 
 <p align = "center"><b>Figure 2.  phase angle $\psi$ in polar plots</b> </p>
 
+一方面可以从特征方程的实部看出：
 
+$$1 + {K_f}{a_{\lim }}\left[ {G\left( {1 - \cos {\omega _c}T} \right) - H\sin {\omega _c}T} \right] = 0$$
 
+$$\begin{gathered}
+  {a_{\lim }} = \frac{{ - 1}}{{{K_f}{a_{\lim }}\left[ {G\left( {1 - \cos {\omega _c}T} \right) - H\sin {\omega _c}T} \right]}} = \frac{{ - 1}}{{{K_f}{a_{\lim }}G\left[ {\left( {1 - \cos {\omega _c}T} \right) - \frac{H}{G}\sin {\omega _c}T} \right]}} \\\\
+   = \frac{{ - 1}}{{2{K_f}G\left( {{\omega _c}} \right)}} \\\\
+\end{gathered} $$
 
+由于，轴向切深为正值，所以，如果颤振发生，那么发生颤振的频率 ${\omega _c}$ 对应的频响的实部必须<b>为负</b>。
+$\psi $  角只能在二、三象限。
+$\psi \in (-180^{\circ} ,-90^\circ)$，所以有$\psi + {\pi } \in (0^{\circ} ,90^\circ)$
+把这个 $\pi$ 移到等号另一边，这样就能解释上面的 $ - \frac{{3\pi }}{2}$ 了。
+
+另一个角度也可以说明，为什么颤振频率比固有频率要高，因为固有频率处实部为零，而颤振频率为实部为负的地方，显然此处的频率要大于该阶模态对应的固有频率。
+
+从机械这个二阶系统来说，对于实部为负时，其相位只能在第二、三象限， 也能解释得通。
