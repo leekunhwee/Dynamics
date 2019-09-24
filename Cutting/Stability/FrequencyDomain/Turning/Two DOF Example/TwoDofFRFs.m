@@ -13,6 +13,7 @@
 clc
 clear
 close all
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Reference£º
 %Altintas, Y. (2012). Manufacturing Automation: 
@@ -20,6 +21,7 @@ close all
 %Applied Mechanics Reviews (Vol. 54). https://doi.org/10.1115/1.1399383
 %P131
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %% Define modal parmeters
 k    = [2.26e8 2.13e8];               % Modal stiffness N/m
 zeta = [0.012  0.010 ];               % Modal damping ratio
