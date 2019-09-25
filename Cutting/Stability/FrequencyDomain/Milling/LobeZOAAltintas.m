@@ -9,7 +9,7 @@
 % Manufacturing Automation Laboratary        %
 % E-mail: jianhui.li@alumni.ubc.ca           %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Have some Problems
+%% Have some Problems: Nagetive frequency points
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %            Zero-Order Solution            %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
