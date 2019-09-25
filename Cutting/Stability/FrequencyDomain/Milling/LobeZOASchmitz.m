@@ -78,7 +78,7 @@ for cnt = 1:length(w)
         dot_prod1 = real(lambda2(cnt))*real(lambda2(cnt-1)) + imag(lambda2(cnt))*imag(lambda2(cnt-1));
         dot_prod2 = real(lambda2(cnt))*real(lambda1(cnt-1)) + imag(lambda2(cnt))*imag(lambda1(cnt-1));
         % This part is really important. For conjugate pair, the value of dot product means the projection 
-        % which can be used to find the nearest next point. 
+        % which can be used to find the nearest next point. See the picture in README.md. 
         if (dot_prod2 > dot_prod1)
             temp = lambda2(cnt);
             lambda2(cnt) = lambda1(cnt);
