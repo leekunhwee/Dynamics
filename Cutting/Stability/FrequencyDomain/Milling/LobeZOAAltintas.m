@@ -9,7 +9,7 @@
 % Manufacturing Automation Laboratary        %
 % E-mail: jianhui.li@alumni.ubc.ca           %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% ”–Œ Ã‚ Have some Problems
+%% Have some Problems
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %            Zero-Order Solution            %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -54,7 +54,7 @@ FRFyy = FRFY;
 
 %% Calculate Lambda
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Reference£∫
+%Reference 
 %Altintas, Y. (2012). Manufacturing Automation: 
 %Metal Cutting Mechanics, Machine Tool Vibrations, and CNC Design. 
 %Applied Mechanics Reviews (Vol. 54). https://doi.org/10.1115/1.1399383
@@ -119,6 +119,6 @@ axis([0 16000 0 6])
 xlabel('\it\Omega \rm/ rpm')
 ylabel('\itb_{lim} \rm/ mm')
 set(gca,'FontSize', 11 ,'FontName', 'Times New Roman')
-set(gcf,'unit','centimeters','position',[28 5 13.53 9.03],'color','white');% word£®13.5,9£©
+set(gcf,'unit','centimeters','position',[28 5 13.53 9.03],'color','white');% word 13.5,9
 set(gca,'xtick',[2000 4000 6000 8000 10000 12000 14000 16000])
 grid on
