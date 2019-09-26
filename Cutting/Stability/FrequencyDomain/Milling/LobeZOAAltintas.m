@@ -70,35 +70,7 @@ for cnt = 1:length(w)
     lambda	= roots([a0(cnt) a1(cnt) 1]);	% Eigenvalue 
     Lambda1(cnt) = lambda(1);
     Lambda2(cnt) = lambda(2);
-    
-    if (abs(Lambda1(cnt)) > abs(Lambda2(cnt)))
-        temp = Lambda2(cnt);
-        Lambda2(cnt) = Lambda1(cnt);
-        Lambda1(cnt) = temp;
-    end
-    
-    if(cnt > 1)
-        dot_prod1 = real(Lambda2(cnt))*real(Lambda2(cnt-1)) + imag(Lambda2(cnt))*imag(Lambda2(cnt-1));
-        dot_prod2 = real(Lambda2(cnt))*real(Lambda1(cnt-1)) + imag(Lambda2(cnt))*imag(Lambda1(cnt-1));
-    % This part is really important. For conjugate pair, the value of dot product means the projection 
-    % which can be used to find the nearest next point. See the picture in README.md. 
-        if (dot_prod2 >= dot_prod1)
-            temp = Lambda2(cnt);
-            Lambda2(cnt) = Lambda1(cnt);
-            Lambda1(cnt) = temp;
-        end
-    end
 end
-
-% a0 = zeros(length(w),1);
-% a1 = zeros(length(w),1);
-% for cnt = 1:length(w)
-%     a0(cnt) = FRFxx(cnt)*FRFyy(cnt)*(alphaxx*alphayy - alphaxy*alphayx);
-%     a1(cnt) = alphaxx*FRFxx(cnt) + alphayy*FRFyy(cnt);
-% 
-%     Lambda1(cnt) = (-1/2./a0(cnt)).*(a1(cnt) + sqrt(a1(cnt).^2 - 4*a0(cnt)));
-%     Lambda2(cnt) = (-1/2./a0(cnt)).*(a1(cnt) - sqrt(a1(cnt).^2 - 4*a0(cnt)));
-% end
 
 blim1 = -(2*pi/Nt/Kt) .* (real(Lambda1) .* (1 + (imag(Lambda1)./real(Lambda1)).^2));  % m
 blim2 = -(2*pi/Nt/Kt) .* (real(Lambda2) .* (1 + (imag(Lambda2)./real(Lambda2)).^2));
@@ -109,7 +81,7 @@ blim1 = blim1 * 1e3;      % mm
 w1 = w(index1);
 psi1 = atan2(imag(Lambda1), real(Lambda1));
 psi1 = psi1(index1);
-epsilon1 = pi - 2 * psi1;
+epsilon1 = 3*pi - 2 * psi1;
 
 [index2] = find(blim2 > 0);
 blim2 = blim2(index2);
@@ -117,7 +89,7 @@ blim2 = blim2 * 1e3;
 w2 = w(index2);
 psi2 = atan2(imag(Lambda2), real(Lambda2));
 psi2 = psi2(index2);
-epsilon2 = pi - 2 * psi2;
+epsilon2 = 3*pi - 2 * psi2;
 
 lobeNumber = 20;
 
