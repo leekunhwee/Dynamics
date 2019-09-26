@@ -69,7 +69,7 @@ for cnt = 1:length(w)
     
     % Calculate eigenvalues value for the standard form by eig() function
     E = eig(FRF_or);
-    temp = E(1);
+     temp = E(1);
     lambda1(cnt) = temp;
     temp = E(2);
     lambda2(cnt) = temp;
