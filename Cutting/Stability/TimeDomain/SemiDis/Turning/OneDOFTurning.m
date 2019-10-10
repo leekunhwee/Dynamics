@@ -11,10 +11,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Turning stability using semi-discrete time domain solution
-
 clc
 clear
-close all
+% close all
 
 %% Dynamic Parameters
 % One DOF
@@ -31,6 +30,8 @@ depth_st = 0e-3;    % Starting depth of cut(m)
 depth_fi = 60e-3;   % Final depth of cut(m)
 speed_st = 2e3;     % Starting spindle speed(rpm)
 speed_fi = 14e3;    % Final spindle speed(rpm)
+speed_step = 400;
+depth_step = 200;
 
 %% Initial conditions
 I = eye(2);
@@ -38,10 +39,10 @@ unstableA=0;
 unstableN=0;
 
 % Spindle Speed loop
-for n=speed_st:100:speed_fi
+for n=speed_st:(speed_fi-speed_st)/speed_step:speed_fi
     % Cutting depth loop
-    da = 0.2e-3; % Axis depth step(m)
-    for a=depth_st:da:depth_fi
+%     da = 0.2e-3; % Axis depth step(m)
+    for a =depth_st:(depth_fi-depth_st)/depth_step:depth_fi
         % Build the L and R matrix
         L = [0, 1; -(wn^2)*(1+(K_f*a/k_y)), -2*zeta*wn];
         R = [0, 0; (wn^2)*K_f*a/k_y, 0];
@@ -65,7 +66,7 @@ for n=speed_st:100:speed_fi
         B = B1+B2;
         % Check all the eigenvalues of B matrix
         if any(abs(eig(B))>=1)
-            unstableA = [unstableA, a-da];
+            unstableA = [unstableA, a];
             unstableN = [unstableN, n];
 %             plot(n,a,'. blue');
             disp([n a]);
@@ -75,13 +76,13 @@ for n=speed_st:100:speed_fi
 end
 
 % hold on
-figure;
+% figure;
 
-plot(unstableN,unstableA*1000,'.');
+plot(unstableN,unstableA*1000,'.r');
 xlabel('Spindle speed [rev/min]');
 ylabel('a_l_i_m [mm]');
 title(['Stability of a 1-DOF shaping process - dt = ',num2str(deltaT),'s']);
-set(gcf,'unit','centimeters','position',[18 5 13.53 9.03],'color','white');%∂‘”¶word£®13.5,9£©
+set(gcf,'unit','centimeters','position',[18 5 13.53 9.03],'color','white');% word£®13.5,9£©
 set(gca,'FontSize', 10 ,'FontName', 'Times New Roman','xtick',[2000 4000 6000 8000 10000 12000 14000 16000])
 axis([2000 15000 0 60])
 grid on

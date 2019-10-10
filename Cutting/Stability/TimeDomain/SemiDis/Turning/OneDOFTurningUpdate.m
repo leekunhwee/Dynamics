@@ -14,7 +14,7 @@
 % Reduce the dimension from 2(m+1) to m+2
 clc
 clear
-close all
+% close all
 
 %% Dynamic Parameters
 % One DOF
@@ -26,7 +26,7 @@ wn = 250*2*pi;              % Natural Frequency rad/sec
 K_f = 1e9;                  % Cutting Constant N/m2
 
 %% Simulation Parameters
-k = 40;               % number of discretization interval over one period T
+k =100;               % number of discretization interval over one period T
 m = k;                % since time delay = time period
 depth_st = 0e-3;    % Starting depth of cut(m)
 depth_fi = 60e-3;   % Final depth of cut(m)
