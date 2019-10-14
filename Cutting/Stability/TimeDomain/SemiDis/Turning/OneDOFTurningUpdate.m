@@ -26,7 +26,7 @@ wn = 250*2*pi;              % Natural Frequency rad/sec
 K_f = 1e9;                  % Cutting Constant N/m2
 
 %% Simulation Parameters
-k =100;               % number of discretization interval over one period T
+k =40;               % number of discretization interval over one period T
 m = k;                % since time delay = time period
 depth_st = 0e-3;    % Starting depth of cut(m)
 depth_fi = 60e-3;   % Final depth of cut(m)
@@ -37,6 +37,13 @@ depth_step = 200;
 
 %% Initial conditions
 I = eye(2);
+% Initial the B1 and B2 matrix, Attention! Column and row
+B1 = zeros(m+2,m+2);
+B2 = zeros(m+2,m+2);
+dia = ones(m+1,1);
+dia(1:2)=0;
+B1 = B1 + diag(dia,-1);
+B1(3,1) = 1;
 
 % Spindle Speed loop
 for s = 1:speed_step+1
@@ -51,13 +58,7 @@ for s = 1:speed_step+1
         a = depth_st+(d-1)*(depth_fi-depth_st)/depth_step;
         L = [0, 1; -(wn^2)*(1+(K_f*a/k_y)), -2*zeta*wn];
         R = [0, 0; (wn^2)*K_f*a/k_y       , 0         ];
-        % Initial the B1 and B2 matrix, Attention! Column and row
-        B1 = zeros(m+2,m+2);
-        B2 = zeros(m+2,m+2);
-        dia = ones(m+1,1);
-        dia(1:2)=0;
-        B1 = B1 + diag(dia,-1);
-        B1(3,1) = 1;
+
         % Define the first two Column and Row of B1
         B1(1:2,1:2) = expm(L*dt);   
         % Build the complete matrix of B2
@@ -81,7 +82,6 @@ end
 hold on
 % figure 
 contour(ss,dp,ei,[1, 1])
-
 xlabel('Spindle speed [rev/min]');
 ylabel('a_l_i_m [mm]');
 title('Stability of a 1-DOF shaping process');

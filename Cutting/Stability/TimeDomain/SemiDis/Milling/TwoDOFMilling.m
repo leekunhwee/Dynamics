@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% ---------------Copyright------------------%
+%% -------------Copyright---------------%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Author: Jianhui Li                         %
 % Time: 03/14/2019                           %
@@ -9,19 +9,16 @@
 % Manufacturing Automation Laboratary        %
 % E-mail: jianhui.li@alumni.ubc.ca           %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 %% Semi-discretization Method 
 % Updated semi-discretization method for periodic delay-differential equations with discrete delay
 % Two DOF 
 clc
-close all
+% close all
 clear 
-
 %% Tool Parameters 
 N = 2;% number of teeth
 Kt = 6e8; % tangential cutting force coefficient (N/m2)
-Kn = 2e8;% normal cutting force coefficient (N/m2)
-
+Kn = 2e8; % normal cutting force coefficient (N/m2)
 %% Dynamic Parameters
 w0x = 922*2*pi; % angular natural frequency x (rad/s) 
 zetax = 0.011;  % relative damping x(1)
@@ -67,24 +64,18 @@ D(5, 1) = 1;
 D(6, 2) = 1; 
 % numerical integration of specific cutting force coefficient according to
 % Equation (40)-(43)
-
 hxx = zeros(1,k); 
 hxy = zeros(1,k); 
 hyx = zeros(1,k);  
 hyy = zeros(1,k); 
 fi = zeros(1,intk); 
 g = zeros(1,intk);
-
+dtr = 2*pi/N/k; % Delta_Phi,if Phi_p = 2 Pai/N
 %% numerical integration of specific cutting force coefficient 
 for i = 1 : k 
-    dtr = 2*pi/N/k; % Delta_Phi,if Phi_p = 2 Pai/N
-    hxx(i) = 0; 
-    hxy(i) = 0; 
-    hyx(i) = 0; 
-    hyy(i) = 0; 
     for j = 1 : N   % loop for tooth j 
         for h = 1 : intk % loop for numerical integration of hi
-            fi(h) = i*dtr +( j-1)*2*pi/N +h*dtr/intk; 
+            fi(h) = (i-1)*dtr +(j-1)*2*pi/N + h*dtr/intk; 
             if (fi(h)>= fist)&&(fi(h)<= fiex) 
                 g(h) = 1;% tooth is in the cut
             else
@@ -97,7 +88,6 @@ for i = 1 : k
         hyy(i) = hyy(i)+sum(g.*(-Kt* sin(fi)+Kn.* cos(fi)).* cos(fi))/intk;
     end
 end
-
 % start of computation 
 for x = 1 : step_speed+1   % loop for spindle speeds
     speed = speed_st +(x-1)*(speed_fi-speed_st)/step_speed;% spindle speed
@@ -106,7 +96,7 @@ for x = 1 : step_speed+1   % loop for spindle speeds
     for y = 1 : step_depth+1 % loop for depth of cuts
         w = depth_st +(y-1)*(depth_fi-depth_st)/step_depth; % depth of cut 
         % construct transition matrix Fi
-        Fi = eye(2*m +4, 2*m +4); 
+        Fi = eye(2*m + 4, 2*m + 4); 
         for i = 1 : m 
             A = zeros(4, 4);    % matrix Ai
             A(1, 3) = 1; A(2, 4) = 1; 
@@ -122,10 +112,10 @@ for x = 1 : step_speed+1   % loop for spindle speeds
             B(4, 1) = hyx(i)*w*w0y^2/k_ty; 
             B(4, 2) = hyy(i)*w*w0y^2/k_ty; 
             P = expm(A*dt);% matrix Pi
-            R = (expm(A*dt)-eye(4))*inv(A)*B; % matrix Ri 
+            R = (expm(A*dt)-eye(4))/A * B; % matrix Ri 
             D(1 : 4, 1 : 4) = P; 
-            D(1 : 4,(2*m +1) : (2*m +2)) = wa*R(1 : 4, 1 : 2); 
-            D(1 : 4,(2*m +3) : (2*m +4)) = wb*R(1 : 4, 1 : 2); 
+            D(1 : 4,(2*m + 1) : (2*m + 2)) = wa*R(1 : 4, 1 : 2); 
+            D(1 : 4,(2*m + 3) : (2*m + 4)) = wb*R(1 : 4, 1 : 2); 
             Fi = D*Fi;  % transition matrix Phi
         end
         ss(x, y) = speed;   % matrix of spindle speeds
