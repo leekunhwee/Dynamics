@@ -104,3 +104,12 @@ HX00=[h1X,h2X];
 HY00=[h1Y,h2Y];
 
 save ('H00','HX00','HY00','f_start','f_end','df')
+
+fileID = fopen('X.frf','w');
+A=[f';h1X';h2X'];
+fprintf(fileID,'%.6e %.12e %.12e\n',A);
+fclose(fileID);
+fileID = fopen('Y.frf','w');
+B=[f';h1Y';h2Y'];
+fprintf(fileID,'%.6e %.12e %.12e\n',B);
+fclose(fileID);

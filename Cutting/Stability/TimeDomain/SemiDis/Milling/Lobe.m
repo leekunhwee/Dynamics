@@ -7,10 +7,10 @@ load H00
 %% Cutting force coefficients
 Kt = 750e6; % N/m^2
 Kn = 150e6/750e6;
-Nt = 4;
+Nt = 2;
 
 %% Cutting condition
-D = 20;       % mm
+D = 31.75;       % mm
 ae = D/2;
 operation = 1; % down-milling
 
