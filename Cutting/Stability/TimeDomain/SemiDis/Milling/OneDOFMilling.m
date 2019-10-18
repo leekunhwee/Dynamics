@@ -101,7 +101,7 @@ for x = 1 : step_speed+1% loop for spindle speeds
     end
 step_speed+1-x          % Process Display
 end
-%% figure 
+figure 
 hold on
 contour(ss,dc,ei,[1, 1])
 xlabel('Spindle speed [rev/min]');

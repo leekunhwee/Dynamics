@@ -12,7 +12,7 @@
 clc;clear;
 % close all
 %% Cutting Parameters
-N  = 4;         % Number of teeth
+N  = 2;         % Number of teeth
 aD = 0.5;       % radial depth of cut / Ratio
 up_or_down = -1; % 1: up-milling, -1: down-milling
 if up_or_down == 1  % up-milling
@@ -51,7 +51,7 @@ UU=[Px,0,0;
     0,0,Py];
 M = length(fx)+length(fy);
 %% computational parameters 
-k = 40;% number of discretization interval over one period
+k = 20;% number of discretization interval over one period
 intk =10;% number of numerical integration steps for Equation (37)
 m = k;% since time delay = time period
 wa = 1/2;% since time delay = time period
@@ -131,5 +131,4 @@ set(gcf,'unit','centimeters','position',[18 5 13.53 9.03],'color','white');%∂‘”¶
 set(gca,'FontSize', 10 ,'FontName', 'Times New Roman')
 % axis([speed_st speed_fi depth_st*1000 depth_fi*1000])
 axis([500 5000 0.8 2.4])
-
 grid on

@@ -1,27 +1,26 @@
-clc
-clear
-% close all
-
-load H00
-
-%% Cutting force coefficients
-Kt = 750e6; % N/m^2
-Kn = 150e6/750e6;
-Nt = 4;
-
-%% Cutting condition
-D = 20;       % mm
-ae = D/2;
-operation = 1; % down-milling
+function ZOA (FRF,CuttingCoef,ToolGeo,Cutting)
+%% Parameter 
+% Simulation parameter
+w  = FRF.w;% frequency, rad/s
+% f  = FRF.f;% frequency, Hz
+% Cutting Coefficient
+Kt = CuttingCoef.Kt; % N/m^2
+Kn = CuttingCoef.Kr/CuttingCoef.Kt;
+% Tool geometry
+Nt = ToolGeo.Nt;
+D  = ToolGeo.D;
+% Cutting condition
+ae = Cutting.ae;
+operation = Cutting.operation;
 
 %% Cutting angle
-phis = acos((D/2 - ae)/(D/2));  % (rad) the immersion angle
-if operation == 0             % Up milling 
-    phist = 0;                % Start angle rad
-    phiex = phist + phis;     % Exit angle rad
-else                          % Down milling
-    phiex = pi;               % Start angle rad
-    phist = phiex - phis;     % Exit angle rad
+% 1: up-milling, -1: down-milling
+if operation == 1  % up-milling
+    phist = 0;   % start angle % exit angle
+    phiex = acos(1-2*(ae/D));
+elseif operation == -1 % down-milling % start angle % exit angle
+    phist = acos(2*(ae/D)-1); 
+    phiex = pi;
 end
 
 %% Average angle parameters
@@ -31,9 +30,8 @@ alphayx = 0.5*((-sin(2*phiex)+2*phiex+Kn*cos(2*phiex))   -(-sin(2*phist)+2*phist
 alphayy = 0.5*((-cos(2*phiex)-2*Kn*phiex-Kn*sin(2*phiex))-(-cos(2*phist)-2*Kn*phist-Kn*sin(2*phist)));
 
 %% Initialization
-w = (f_start:df:f_end)'*2*pi;   % frequency, rad/s
-FRFxx = HX00;
-FRFyy = HY00;
+FRFxx = FRF.X;
+FRFyy = FRF.Y;
 lambda1=zeros(1,length(w));
 lambda2=zeros(1,length(w));
 
@@ -45,7 +43,7 @@ for cnt = 1:length(w)
     % Calculate two eigenvalues -- lambda
     % Note: the definations of lambda and Lambda are slightly different
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % Reference
+    % Reference£º
     % T.L. Schmitz, K.S. Smith, Machining Dynamics, springer, Springer US, 
     % Boston, MA, 2009. https://doi.org/10.1007/978-0-387-09645-2.
     % P133
@@ -105,17 +103,9 @@ for k = 1:lobeNumber
     omega2{k} = (60/Nt)*w2./(epsilon2 + 2*(k-1)*pi);
 end
 
-figure(1)
+figure
 hold on
 for k = 1:lobeNumber
     plot(omega1{k},blim1, 'r','linewidth',2);
     plot(omega2{k},blim2, 'b','linewidth',2);
 end
-
-axis([1000 5000 1 3])
-xlabel('\it\Omega \rm/ rpm')
-ylabel('\itb_{lim} \rm/ mm')
-set(gca,'FontSize', 11 ,'FontName', 'Times New Roman')
-set(gcf,'unit','centimeters','position',[28 5 13.53 9.03],'color','white');% word?¡§13.5,9??
-set(gca,'xtick',[2000 4000 6000 8000 10000 12000 14000 16000])
-grid on
