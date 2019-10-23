@@ -103,9 +103,9 @@ for k = 1:lobeNumber
     omega2{k} = (60/Nt)*w2./(epsilon2 + 2*(k-1)*pi);
 end
 
-figure
+% figure
 hold on
 for k = 1:lobeNumber
-    plot(omega1{k},blim1, 'r','linewidth',2);
-    plot(omega2{k},blim2, 'b','linewidth',2);
+    plot(omega1{k},blim1, 'r.','linewidth',2);
+    plot(omega2{k},blim2, 'b.','linewidth',2);
 end

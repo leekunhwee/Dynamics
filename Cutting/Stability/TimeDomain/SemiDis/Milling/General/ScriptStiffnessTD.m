@@ -22,8 +22,8 @@ Parameter.Dynamic.shape.y = [1.05995744178464 2.51245130218873];
 Parameter.Simulation.f_start = 0;       % Hz
 Parameter.Simulation.f_end = 8000;  % Hz
 Parameter.Simulation.df = 1;            % Hz
-Parameter.Simulation.step_speed = 100;% steps of spindle speed
-Parameter.Simulation.step_depth = 100;% steps of depth of cut
+Parameter.Simulation.step_speed = 400;% steps of spindle speed
+Parameter.Simulation.step_depth = 200;% steps of depth of cut
 
 Parameter.Simulation.depth_st = 0e-3; % starting depth of cut (m) 
 Parameter.Simulation.depth_fi = 6e-3;  % final depth of cut (m)
@@ -39,8 +39,8 @@ Parameter.ToolGeo.D = 31.75;
 Parameter.Cutting.ae = Parameter.ToolGeo.D/2;
 Parameter.Cutting.operation = -1; % -1 Downmilling ; 1 Upmilling 
 % computational parameters 
-Parameter.Calc.k = 20;% number of discretization interval over one period
-Parameter.Calc.intk =10;% number of numerical integration steps for Equation (37)
+Parameter.Calc.k = 40;% number of discretization interval over one period
+Parameter.Calc.intk =20;% number of numerical integration steps for Equation (37)
 
 Parameter.Calc.m = Parameter.Calc.k;% since time delay = time period
 Parameter.Calc.wa = 1/2;% since time delay = time period
