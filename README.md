@@ -1,6 +1,8 @@
 # Dynamics
 * Cutting
   * Cutting Process analysis and calculation
+* Multibody
+  * Multibody Dynamics course
 * RCSA
   * :hammer: Receptance Coupling Substructure Analysis - Developed by T. L. Schmitz
 * Timo
