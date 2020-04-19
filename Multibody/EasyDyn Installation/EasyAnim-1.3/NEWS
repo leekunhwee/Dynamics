@@ -1,0 +1,35 @@
+From version 1.2 to version 1.3
+-------------------------------
+
+No difference for the user. A few lines have been changed for compatibility 
+with the last version of mingw under Windows.
+
+From version 1.1 to version 1.2
+-------------------------------
+
+The following features have been changed or added
+
+- mode shapes can also be animated; mode shapes can be loaded in two
+manners: from .vol and .vmo data files, or from universal data files
+(see README)
+
+- the index of the nodes, edges and surfaces (wich was not used) has
+been replaced by an alphanumeric name; only the name of the nodes can
+be used to define the edges and the surfaces; in a near future, we
+hope to be able to visualize the name of the elements on request.
+
+
+From version 1.0 to version 1.1
+-------------------------------
+
+The following features have been changed or added
+
+- the nodes can now be represented, by spheres whose radius is adjustable
+- the edges are now represented as cylinders whose radius is adjustable
+- the visualization of nodes, lines and sides can be switched on or off
+  independently by means of buttons
+- a slider has been added to control the animation speed
+- the animation process is visualized on a slider from which you can also
+  choose the represented image
+- the backward button works
+- the animation  restarts at the end only if the LOOP button is pushed

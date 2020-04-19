@@ -1,0 +1,232 @@
+
+                               EASYANIM
+                               --------
+
+Purpose of EasyAnim
+-------------------
+
+EasyAnim is a little program to animate on the screen scenes composed
+of nodes, edges and surfaces.  It is based on OpenGL so that light and
+hidden-surfaces are treated automatically. The animation is built from
+ASCII data files, one for the geometry (nodes, edges and surfaces) and
+another one describing either successive node positions or node
+positions corresponding to an eigen mode.
+
+The software runs under Windows and Linux, without changing a line of
+code, thanks to the V library it is based upon. Although it has been
+tested only under Linux, EasyAnim is likely to be compiled
+successfully under other Unix variants. You can download V from
+vgui.sourceforge.net
+
+EasyAnim will favourably accompany EasyDyn for example to animate on
+screen the simulation of a multibody system. EasyDyn also provides a
+library (EasyDyn/visu) to generate the files used by EasyAnim.
+
+Installing EasyAnim
+-------------------
+
+You will find executable binaries for Windows and Linux respectively
+in directories binwin and binlinux. For Linux, an X-Athena version and
+a Motif version are provided. The corresponding libraries should of
+course be installed. However, we recomend the Motif version as the
+X-Athena version is sometimes unstable. It must also be noted that
+EasyAnim doesn't always work when the 3D acceleration is activated.
+
+To compile EasyAnim, you will need a C++ compiler. GCC over 3.0 was
+successfully tested. Under Windows, download mingw (www.mingw.org)
+which is available for free.
+
+You will first have to compile the V library: 
+
+1) Download V library from vgui.sourceforge.net and extract the archive
+   (we have used v-1.90 slightly modified for compatibility with recent gcc)
+
+2) From the main V directory, choose the correct makefile: 
+   For Linux, copy configs/ConfigX.mk to Config.mk and choose between Athena 
+   and Motif at (about) lines 71 and 72
+   For Windows and mingw, copy configs/CfgMing.mk to Config.mk
+
+3) Compile the library
+   Under Linux, just enter: make
+   Under Windows, the makefile doesn't work globally but is OK from each 
+   subdirectory; so go in srcwin directory and enter: mingw32-make
+   At the end of the process, you get the libraries in the lib directory.
+
+To compile EasyAnim itself, you have two makefiles: makefile.x for
+Linux (and likely any Unix) and makefile.win for Windows/mingw. Normally, 
+you will just have to adapt the V directory in the makefile.
+
+Under Linux, enter
+
+make -f makefile.x
+
+and under Windows/mingw
+
+mingw32-make -f makefile.win
+
+In case of problem, contact me (see below).
+
+Data files
+----------
+
+Easynim can load three kinds of data
+
+- a geometry file (.vol) coupled with an animation file giving
+successive node positions (.van), and eventually a configuration file
+(.cfg) with some visualization parameters;
+
+- a geometry file (.vol) coupled with a file (.vmo) giving successive
+eigen modes defined by frequency, damping ratio and the node positions
+corresponding to the eigen deflection, and eventually a configuration
+file (.cfg) with some visualization parameters;
+
+- two so-called universal files (generally .unv or .uff), one for the
+geometry (consisting of a universal block 15 and a universal block 82),
+and the other for the modes (each mode in a universal block 55);
+
+In each case, if only the geometry file is present, the scene is
+anyway shown on the screen but cannot of course be animated.
+
+The file with extension .cfg specifies the visualization parameters
+(distance, position, viewing angles). It is created from the EasyAnim
+menu (File->Save Config). Pay attention that new versions of the .cfg
+files could be incompatible with older versions of EasyAnim.
+
+Format of the geometry .vol file
+--------------------------------
+
+This file first defines the nodes with their coordinates, then a set of
+edges by specifying the end nodes, and finally some polygonal surfaces,
+defined by the nodes along the perimeter (any number of nodes).
+
+The format of the file is the following
+
+A comment line
+Nn               # the number of nodes
+node1 X1 Y1 Z1   # the name (alphanumeric) of the node and its coordinates
+node2 X2 Y2 Z2
+:
+nodeNn XNn YNn ZNn
+Ne               # the number of edges
+edge1 iname1 jname1 color1  # the name of the edge, the names of the edge
+edge2 iname2 jname2 color2  # nodes, and the color (cf. later)
+:
+edgeNe inameNe jnameNe colorNe
+Np               # the number of polygons
+poly1 N1 iname1 jname1 kname1 ... color1 # the name of the polygon, the number
+poly2 N2 iname2 jname2 kname2 ... color2 # of perimeter nodes, the names of the
+:                                # perimeter nodes and the color of the surface
+polyNp Nep inameNp jnameNp ... colorNp
+
+You will find data files related to simple scenes (square and pyramid)
+in the examples directory. The most often, the names correspond to the
+number of the item. Have a look at square.vol in the examples to see
+how alphanumeric names can be used as well.
+
+Due to the history of the development, the codes for the colours
+correspond (and are so far limited to) to the ones used by TurboPascal
+(0:black, 1:blue, 2:green, 3:cyan, 4:red, 5:magenta, 6:brown,
+7:lightgray, 8:darkgray, 9:lightblue, 10:lightgreen, 11:lightcyan,
+12:lightred, 13:lightmagenta, 14: yellow, 15:white). It is foreseen to
+switch later to a description in RGB.
+
+Format of the .van file
+-----------------------
+
+The format of the .van file is natural. It is composed of successive
+scene configurations described by the corresponding node
+coordinates. For each image, you have 3xNn values, giving the X,Y and
+Z coordinates of each node, as
+
+X1 Y1 Z1
+X2 Y2 Z2
+:
+XNn YNn ZNn
+
+When running the animation, the images are successfully read and
+represented on the screen.
+
+Format of the .vmo file
+-----------------------
+
+The .vmo file consists of a succession of modal deflections. Each
+modal deflection is described by a set of (1+2*Nn) lines in the
+following form:
+
+alpha beta freq damprat
+Xr1 Yr1 Zr1
+Xr2 Yr2 Zr2
+:
+XiNn YrNn ZrNn
+Xi1 Yi1 Zi1
+Xi2 Yi2 Zi2
+:
+XiNn YiNn ZiNn
+
+The first line gives four values relative to the pole: alpha the real
+part of the pole, beta the imaginary part of the pole, freq the
+frequency and damprat the damping ratio.  The two sets of node
+coordinates give the undeformed configurations corresponding
+respectively to the real and imaginary parts of the mode. Pay
+attention that the coordinates specify the DEFORMED CONFIGURATION and
+NOT THE DISPLACEMENTS with respect to the reference configuration
+(defined in the .vol file).
+
+When loading a mode (options->load mode), the mode number corresponds
+to the order of appearance in the file.
+
+Format of the universal files
+-----------------------------
+
+The geometry file consists of a universal block of type 15 describing
+the nodes and a universal block of type 82 describing the edges. No
+surfaces can be defined. The blocks can be placed in any order. Other
+universal blocks can be placed in the file. If several blocks of type
+15 or 82 are present, only the first one will be treated.
+
+The modal file consists of successive universal blocks of type
+55. They can also be mixed with other universal blocks. When loading a
+mode (options->load mode), the mode number corresponds to the order of
+appearance in the file.
+
+The universal files are well described in litterature and can often be
+exported directly from modal analysis softwares.
+
+Using EasyAnim
+--------------
+
+The usage of EasyAnim is straightforward. Once you have loaded the
+scene (File->Load), you can animate it and change the view from the
+button menu.  Just put the mouse pointer on the button, and it will be
+commented. Play with the buttons to understand.
+
+It is quite easy to rotate and translate the scene, to change the zoom,
+to switch to four views, and so on ... 
+
+You can also activate or deactivate independently the visualization of
+nodes, edges and sides. The nodes (lines) are represented as a sphere
+(cylinder) whose radius is adjustable from buttons.
+
+In the same way, you may switch on or off the visualization of the reference
+mark and change its size.
+
+From the options menu, you can change the background colour and load a
+different mode if you loaded a modal analysis.
+
+Acknowledgements
+----------------
+
+Thanks to Selim Datoussaid who began the work with OpenGL and Leatitia
+Lerat, who made the first GUI version with the V library.
+
+Contact
+-------
+
+Here are my coordinates
+
+Prof. Olivier VERLINDEN
+Faculte Polytechnique de Mons
+Department of Theoretical Mechanics, Dynamics and Vibrations
+31, Bd Dolez; 7000 MONS (BELGIUM)
+E-mail: Olivier.Verlinden@fpms.ac.be
+

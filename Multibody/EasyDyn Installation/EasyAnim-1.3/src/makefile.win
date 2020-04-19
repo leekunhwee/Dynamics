@@ -1,0 +1,44 @@
+# Makefile to build EasyAnim under Windows with mingw
+# You will need to install and build the V library before
+
+CC      =       c++
+
+# Adapt HOMEV to your own configuration
+HOMEV   =       ../../v
+LIBS	=	-lV -lVgl -lglu32 -lopengl32 -lcomctl32 -mwindows
+VLibDir	=	$(HOMEV)/lib
+oDir	=	.
+Bin	=	.
+
+# Flags for includes and libraries
+CFLAGS  =       -fpermissive -O -I$(HOMEV)/includew
+LFLAGS	=	-O -L$(VLibDir)
+EXOBJS  =       $(oDir)/EasyAnim.o \
+                $(oDir)/EasyAnimcnv.o \
+                $(oDir)/EasyAnimcmdw.o \
+                $(oDir)/EasyAnimmdlg.o \
+                $(oDir)/EasyAnimGL.o \
+
+# Let's go to the program building
+
+all:    $(Bin)/EasyAnim
+
+objs:	$(EXOBJS)
+
+$(Bin)/EasyAnim:        $(EXOBJS)
+	$(CC) -o $@ $(LFLAGS) $(EXOBJS) $(LIBS)
+
+$(oDir)/EasyAnim.o:      EasyAnim.cpp  EasyAnim.h EasyAnimcnv.h EasyAnimcmdw.h EasyAnimmdlg.h
+	$(CC) -c $(CFLAGS) -o $@ $<
+
+$(oDir)/EasyAnimcnv.o:      EasyAnimcnv.cpp  EasyAnimcnv.h EasyAnimGL.h 
+	$(CC) -c $(CFLAGS) -o $@ $<
+
+$(oDir)/EasyAnimcmdw.o:      EasyAnimcmdw.cpp EasyAnimcmdw.h EasyAnimcnv.h EasyAnimmdlg.h EasyAnimGL.h 
+	$(CC) -c $(CFLAGS) -o $@ $<
+
+$(oDir)/EasyAnimGL.o:      EasyAnimGL.cpp EasyAnimGL.h EasyAnimcnv.h
+	$(CC) -c $(CFLAGS) -o $@ $<
+
+$(oDir)/EasyAnimmdlg.o:      EasyAnimmdlg.cpp EasyAnimmdlg.h EasyAnimcmdw.h EasyAnimcnv.h
+	$(CC) -c $(CFLAGS) -o $@ $<
