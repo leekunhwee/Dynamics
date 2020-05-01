@@ -4,7 +4,7 @@
 clc; clear;   % the best way to begin a Matlab script
 close all;    % close all figures
 
-% This allows to share variables with functions (rled in this case)
+% This allows to share variables with functions (CauchyForm in this case)
 global R L U;
 
 % The values of R, L and U are given here and then used in the function
