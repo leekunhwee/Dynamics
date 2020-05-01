@@ -9,20 +9,20 @@ $$ m \ddot{x} + kx = u \tag{1} $$
 可以化为对应的一次微分方程组:
 
 $$ \left[ {\begin{array}{*{20}{c}}
-{{{\dot x}_1}}\\
-{{{\dot x}_2}}
+{{{\dot x} _1}}\\
+{{{\dot x} _2}}
 \end{array}} \right]{\rm{ = }}\left[ {\begin{array}{*{20}{c}}
 0&{\frac{1}{m}}\\
 { - k}&0
 \end{array}} \right]\left[ {\begin{array}{*{20}{c}}
-{{x_1}}\\
-{{x_2}}
+{{x _1}}\\
+{{x _2}}
 \end{array}} \right] + \left[ {\begin{array}{*{20}{c}}
 0\\
 1
 \end{array}} \right]u \tag{2} $$
 
-其中，$\dot{x}_1=\frac{1}{m}x_2$; $\ \ \  \dot{x}_2=-kx_1+u $，即为用于解析法和数值法计算所需的 Cauchy form。
+其中，$\dot{x} _1=\frac{1}{m}x _2$; $\ \ \  \dot{x} _2=-kx _1+u $，即为用于解析法和数值法计算所需的 Cauchy form。
 
 这里给定常量：$m=1$， $k=100$， $u=0$.
 给定初始条件：$x_1(0)=0$，$x_2(0)=1$.
