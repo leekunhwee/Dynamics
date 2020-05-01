@@ -9,16 +9,16 @@ $$ m \ddot{x} + kx = u \tag{1} $$
 可以化为对应的一次微分方程组:
 
 $$ \left[ {\begin{array}{{c}}
-{{{\dot x} _1}}\\
+{{{\dot x} _1}}\\\\
 {{{\dot x} _2}}
 \end{array}} \right]{\rm{ = }}\left[ {\begin{array}{{c}}
-0&{\frac{1}{m}}\\
+0&{\frac{1}{m}}\\\\
 { - k}&0
 \end{array}} \right]\left[ {\begin{array}{{c}}
-{{x _1}}\\
+{{x _1}}\\\\
 {{x _2}}
 \end{array}} \right] + \left[ {\begin{array}{{c}}
-0\\
+0\\\\
 1
 \end{array}} \right]u \tag{2} $$
 
